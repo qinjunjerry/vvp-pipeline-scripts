@@ -1,5 +1,7 @@
-# extract artifactId and version from pom.xml
-read -r artifactId version <<< `cat pom.xml| python -c "
+# extract artifactId and version from POM file
+pomFile=${Build.SourcesDirectory}/${Build.Repository.Name}/pom.xml
+
+read -r artifactId version <<< `cat ${pomFile} | python -c "
 import sys, xml.etree.ElementTree
 root = xml.etree.ElementTree.fromstring(sys.stdin.read())
 artifactId = ''
