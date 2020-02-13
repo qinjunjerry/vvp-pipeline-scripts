@@ -1,5 +1,5 @@
 # extract artifactId and version from POM file
-repoName=`basename $1`  # GithubOrgOrUser/Repo -> Repo
+repoName=`basename $1`  # use basename to remove Org,User,Project, e.g., 'GithubOrgOrUser/vvp' -> 'vvp'
 pomFile=$repoName/pom.xml
 
 read -r artifactId version <<< `cat ${pomFile} | python -c "
