@@ -1,5 +1,5 @@
-# extract artifactId and version from pom.xml
-source `dirname $0`/extract-artifact-meta.sh
+# extract artifactId and version from POM file
+source `dirname $0`/extract-artifact-meta.sh ${repoName}
 
 # extract commit hash
 # We use the commit hash in jar URI when POST/PATCH a deployment in VVP, e.g.,

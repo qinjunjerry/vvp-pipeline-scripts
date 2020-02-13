@@ -1,5 +1,5 @@
-# extract artifactId and version from pom.xml
-source `dirname $0`/extract-artifact-meta.sh
+# extract artifactId and version from POM file
+source `dirname $0`/extract-artifact-meta.sh  ${repoName}
 
 state=`curl -X GET "http://localhost:8080/api/v1/namespaces/default/deployments" \
 -H "Authorization: Bearer ${vvpAPIToken}" \

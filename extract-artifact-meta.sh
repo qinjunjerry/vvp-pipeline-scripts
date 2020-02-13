@@ -1,5 +1,5 @@
 # extract artifactId and version from POM file
-pomFile=vvp-pipeline-demo/pom.xml
+pomFile=$1/pom.xml
 
 read -r artifactId version <<< `cat ${pomFile} | python -c "
 import sys, xml.etree.ElementTree
