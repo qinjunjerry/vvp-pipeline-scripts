@@ -1,5 +1,6 @@
 # extract artifactId and version from POM file
-pomFile=$1/pom.xml
+repoName=`basename $1`  # GithubOrgOrUser/Repo -> Repo
+pomFile=$repoName/pom.xml
 
 read -r artifactId version <<< `cat ${pomFile} | python -c "
 import sys, xml.etree.ElementTree
