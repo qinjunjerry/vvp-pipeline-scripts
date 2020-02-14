@@ -7,10 +7,8 @@ source `dirname $0`/extract-artifact-meta.sh ${repoName}
 # This way VVP will suspend & start the flink job upon a PATCH action
 commitHash=`echo ${buildVersion} | cut -c 1-7`
 
-echo "${vvpDeploymentConf}"
-
 curl -X POST "http://localhost:8080/api/v1/namespaces/${vvpNamespace}/deployments" \
     -H "Authorization: Bearer ${vvpAPIToken}" \
     -H "accept: application/yaml" -H "Content-Type: application/yaml" -s -d "
-`eval echo echo \"${vvpDeploymentConf}\"`
+`eval echo \"${vvpDeploymentConf}\"`
 "
