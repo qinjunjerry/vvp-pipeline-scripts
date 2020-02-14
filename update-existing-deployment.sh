@@ -8,7 +8,7 @@ source `dirname $0`/extract-artifact-meta.sh ${repoName}
 commitHash=`echo ${buildVersion} | cut -c 1-7`
 
 eval "
-curl -X PATCH \"http://localhost:8080/api/v1/namespaces/${vvpNamespace}/deployments\" \
+curl -X PATCH \"http://localhost:8080/api/v1/namespaces/${vvpNamespace}/deployments/${deploymentId}\" \
     -H \"Authorization: Bearer ${vvpAPIToken}\" \
     -H \"accept: application/yaml\" -H \"Content-Type: application/yaml\" -s -d \"
 `echo \"${vvpDeploymentConf}\"`
