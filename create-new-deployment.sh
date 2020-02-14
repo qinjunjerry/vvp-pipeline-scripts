@@ -10,5 +10,5 @@ commitHash=`echo ${buildVersion} | cut -c 1-7`
 curl -X POST "http://localhost:8080/api/v1/namespaces/${vvpNamespace}/deployments" \
     -H "Authorization: Bearer ${vvpAPIToken}" \
     -H "accept: application/yaml" -H "Content-Type: application/yaml" -s -d "
-${vvpDeploymentConf}
+`eval echo \"${vvpDeploymentConf}\"`
 "
