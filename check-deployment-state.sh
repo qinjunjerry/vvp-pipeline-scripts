@@ -1,5 +1,6 @@
 # extract artifactId and version from POM file
-source `dirname $0`/extract-artifact-meta.sh  ${repoName}
+repoName=`basename ${buildRepository}`  # use basename to remove Org,User,Project, e.g., 'GithubOrgOrUser/vvp' -> 'vvp'
+source `dirname $0`/extract-artifact-meta.sh ${repoName}
 
 state=`curl -X GET "http://localhost:8080/api/v1/namespaces/default/deployments" \
 -H "Authorization: Bearer ${vvpAPIToken}" \
