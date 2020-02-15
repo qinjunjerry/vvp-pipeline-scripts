@@ -1,6 +1,10 @@
 # extract artifactId and version from POM file
-repoName=`basename $1`  # use basename to remove Org,User,Project, e.g., 'GithubOrgOrUser/vvp' -> 'vvp'
-pomFile=$repoName/pom.xml
+pomFile=$1/pom.xml
+
+if [ ! -f ${pomFile} ]; then
+  echo "POM file not found: $pomFile"
+  exit 1;
+fi
 
 read -r artifactId version <<< `cat ${pomFile} | python -c "
 import sys, xml.etree.ElementTree
