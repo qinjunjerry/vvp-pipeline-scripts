@@ -2,6 +2,15 @@
 repoName=`basename ${BUILD_REPOSITORY_NAME}`  # use basename to remove Org,User,Project, e.g., 'GithubOrgOrUser/vvp' -> 'vvp'
 source `dirname $0`/extract-artifact-meta.sh ${repoName}
 
+
+echo curl -X GET "http://localhost:8080/api/v1/namespaces/${VVPNAMESPACE}/deployments" \
+    -H "Authorization: Bearer ${vvpAPIToken}" \
+    -H "accept: application/json" -s
+
+curl -X GET "http://localhost:8080/api/v1/namespaces/${VVPNAMESPACE}/deployments" \
+    -H "Authorization: Bearer ${vvpAPIToken}" \
+    -H "accept: application/json" -s
+
 deploymentId=`curl -X GET "http://localhost:8080/api/v1/namespaces/${VVPNAMESPACE}/deployments" \
     -H "Authorization: Bearer ${vvpAPIToken}" \
     -H "accept: application/json" -s \
