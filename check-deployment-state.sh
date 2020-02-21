@@ -9,7 +9,7 @@ state=`curl -X GET "http://localhost:8080/api/v1/namespaces/default/deployments"
 import sys, json
 j=json.loads(sys.stdin.read())
 for i in j[\"items\"]:
-      if i[\"metadata\"][\"name\"] == \"${ARTIFACTID}-deployment\":
+      if i[\"metadata\"][\"name\"] == \"${artifactId}-deployment\":
               print i[\"status\"][\"state\"]
 "`
 
