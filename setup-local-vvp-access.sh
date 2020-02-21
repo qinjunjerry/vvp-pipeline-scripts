@@ -1,6 +1,6 @@
 
 # az login
-az login --service-principal -u ${SERVICEPRINCIPAL} -p ${SERVICEPRINCIPALKEY} --tenant ${TENANTID}
+az login --service-principal -u ${SERVICEPRINCIPAL} -p ${servicePrincipalKey} --tenant ${tenantId}
 
 # get cluster credential
 az aks get-credentials --resource-group ${RESOURCEGROUP} --name ${KUBERNETESCLUSTER}
