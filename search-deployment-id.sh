@@ -2,19 +2,9 @@
 repoName=`basename ${BUILD_REPOSITORY_NAME}`  # use basename to remove Org,User,Project, e.g., 'GithubOrgOrUser/vvp' -> 'vvp'
 source `dirname $0`/extract-artifact-meta.sh ${repoName}
 
-whoami
-
-which xmllint
+sudo apt-get install libxml2-utils
 which jq
-
-sudo apt install xmllint
-sudo apt install jq
-
-apt install xmllint
-apt install jq
-
-
-
+which xmllint
 
 deploymentId=`curl -X GET "http://localhost:8080/api/v1/namespaces/${VVPNAMESPACE}/deployments" \
     -H "Authorization: Bearer ${vvpAPIToken}" \
