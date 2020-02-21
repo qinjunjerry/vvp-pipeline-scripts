@@ -6,10 +6,12 @@ source `dirname $0`/extract-artifact-meta.sh ${repoName}
 echo curl -X GET "http://localhost:8080/api/v1/namespaces/${VVPNAMESPACE}/deployments" \
     -H "Authorization: Bearer ${vvpAPIToken}" \
     -H "accept: application/json" -s
+echo ===
 
 curl -X GET "http://localhost:8080/api/v1/namespaces/${VVPNAMESPACE}/deployments" \
     -H "Authorization: Bearer ${vvpAPIToken}" \
     -H "accept: application/json" -s
+echo ===
 
 deploymentId=`curl -X GET "http://localhost:8080/api/v1/namespaces/${VVPNAMESPACE}/deployments" \
     -H "Authorization: Bearer ${vvpAPIToken}" \
