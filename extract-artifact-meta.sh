@@ -6,21 +6,11 @@ if [ ! -f ${pomFile} ]; then
   exit 1;
 fi
 
-read -r artifactId version <<< `cat ${pomFile} | python -c "
-import sys, xml.etree.ElementTree
-root = xml.etree.ElementTree.fromstring(sys.stdin.read())
-artifactId = ''
-version = ''
-for child in root:
-  if child.tag.endswith('artifactId'):
-    artifactId = child.text
-  if child.tag.endswith('version'):
-    version = child.text
-print artifactId + ' ' + version
-"`
+artifactId=`xmllint ${pomFile} --xpath "/*[local-name()='project']/*[local-name()='artifactId']/text()" `
+version=`xmllint ${pomFile} --xpath "/*[local-name()='project']/*[local-name()='version']/text()" `
 
 if [ x$artifactId = x -o x$version = x ]; then
-  echo "<artifactId> and/or <version> not found in pom.xml"
+  echo "<artifactId> and/or <version> not found in ${pomFile}"
   exit 1;
 fi
 
