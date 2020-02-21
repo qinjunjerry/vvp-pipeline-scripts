@@ -1,5 +1,5 @@
 # extract artifactId and version from POM file
-repoName=`basename ${buildRepository}`  # use basename to remove Org,User,Project, e.g., 'GithubOrgOrUser/vvp' -> 'vvp'
+repoName=`basename ${BUILD_REPOSITORY_NAME}`  # use basename to remove Org,User,Project, e.g., 'GithubOrgOrUser/vvp' -> 'vvp'
 source `dirname $0`/extract-artifact-meta.sh ${repoName}
 
 state=`curl -X GET "http://localhost:8080/api/v1/namespaces/default/deployments" \
@@ -9,7 +9,7 @@ state=`curl -X GET "http://localhost:8080/api/v1/namespaces/default/deployments"
 import sys, json
 j=json.loads(sys.stdin.read())
 for i in j[\"items\"]:
-      if i[\"metadata\"][\"name\"] == \"${artifactId}-deployment\":
+      if i[\"metadata\"][\"name\"] == \"${ARTIFACTID}-deployment\":
               print i[\"status\"][\"state\"]
 "`
 
